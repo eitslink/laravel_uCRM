@@ -6,7 +6,7 @@ use Inertia\Inertia;
 use App\Http\Controllers\InertiaTestController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\CustomerController;
-
+use App\Http\Controllers\PurchaseController;
 
 Route::resource('items', ItemController::class)
 ->middleware(['auth', 'verified']);
@@ -45,5 +45,8 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::resource('purchases', PurchaseController::class)
+->middleware(['auth', 'verified']);
 
 require __DIR__.'/auth.php';
